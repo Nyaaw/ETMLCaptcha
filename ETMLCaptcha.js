@@ -6,12 +6,19 @@
 */
 
 var config = {
-    container_id = "capthca_container"
+    container_id = "captcha_container"
 };
 
 /**
  * Constructeur de la librairies
  */
 function ETMLCaptcha(){
+
+}
+
+/**
+ * Affiche le design de base pour le captcha
+ */
+function OutputDesign(afterWhat = "header", insideWhat = "body"){
 
 }
