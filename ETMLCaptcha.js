@@ -6,7 +6,7 @@
 */
 
 var config = {
-      
+    container_id = "capthca_container"
 };
 
 /**
@@ -15,4 +15,3 @@ var config = {
 function ETMLCaptcha(){
 
 }
-
