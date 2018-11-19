@@ -39,7 +39,17 @@ function GenerateCaptcha(type = config.type.CALCULATIONS){
 }
 
 class Captcha{
+    _id;
+    _type;
+    _data;
     constructor(id, type, data){
-        
+        this._id = id;
+        this._type = type;
+        this._data = data;
+
+        this.getID = function() { return this._id; }
+        this.getType = function() { return this._type; }
+        this.getData = function() { return this._data; }
     }
-}
+
+};
