@@ -5,6 +5,8 @@
 *	Description : Librairie JavaScript pour ajouter un Captcha HomeMade
 */
 
+import { el, mount } from 'modules/redom.js';
+
 var config = {
       
 };
