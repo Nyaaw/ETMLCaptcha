@@ -5,6 +5,10 @@
 *	Description : Librairie JavaScript pour ajouter un Captcha HomeMade
 */
 
+//Imports
+//Création HTML DOM simplifiée
+import("https://redom.js.org/redom.min.js");
+
 var config = {
     container_id = "captcha_container"
 };
