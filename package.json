@@ -1,0 +1,22 @@
+{
+  "name": "etmlcaptcha",
+  "version": "1.0.0",
+  "description": "Captcha ",
+  "main": "ETMLCaptcha.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nyaaw/ETMLCaptcha.git"
+  },
+  "keywords": [
+    "captcha"
+  ],
+  "author": "nyaaw, sherokhi",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Nyaaw/ETMLCaptcha/issues"
+  },
+  "homepage": "https://github.com/Nyaaw/ETMLCaptcha#readme"
+}

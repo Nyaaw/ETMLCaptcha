@@ -5,9 +5,9 @@
 *	Description : Librairie JavaScript pour ajouter un Captcha HomeMade
 */
 
-//Imports
-//Création HTML DOM simplifiée
-import("https://redom.js.org/redom.min.js");
+var $ = require("JQuery");
+
+import { el, mount } from 'modules/redom.js';
 
 var config = {
     container_id = "captcha_container"
@@ -16,12 +16,13 @@ var config = {
 
 var consts = {
     type = {CALCULATIONS = "calculations", PICTURES = "pictures", TEXT = "text"}
+
 };
 
 /**
  * Constructeur de la librairies
  */
-function ETMLCaptcha(type = ""){
+function ETMLCaptcha(){
 
 }
 
