@@ -10,11 +10,12 @@ var $ = require("JQuery");
 import { el, mount } from 'modules/redom.js';
 
 var config = {
-    container_id = "captcha_container"
+    
     
 };
 
 var consts = {
+    container_id = "captcha_container",
     type = {CALCULATIONS = "calculations", PICTURES = "pictures", TEXT = "text"}
 
 };
@@ -47,7 +48,7 @@ function GenerateCaptcha(type = consts.type.CALCULATIONS){
 function outputCaptchaForm(type){
     switch(type){
         case consts.type.CALCULATIONS:
-            
+            $('#'+config.container_id)
             break;
     }
 }
