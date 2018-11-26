@@ -10,7 +10,11 @@
 import("https://redom.js.org/redom.min.js");
 
 var config = {
-    container_id = "captcha_container",
+    container_id = "captcha_container"
+    
+};
+
+var consts = {
     type = {CALCULATIONS = "calculations", PICTURES = "pictures", TEXT = "text"}
 };
 
@@ -31,9 +35,18 @@ function OutputDesign(afterWhat = "header", insideWhat = "body"){
 /**
  * Génère un captcha selon le type choisi
  */
-function GenerateCaptcha(type = config.type.CALCULATIONS){
+function GenerateCaptcha(type = consts.type.CALCULATIONS){
     switch(type){
-        case config.type.CALCULATIONS:
+        case consts.type.CALCULATIONS:
+            outputCaptchaForm(consts.type.CALCULATIONS);
+            break;
+    }
+}
+
+function outputCaptchaForm(type){
+    switch(type){
+        case consts.type.CALCULATIONS:
+            
             break;
     }
 }
