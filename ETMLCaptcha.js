@@ -5,7 +5,8 @@
 *	Description : Librairie JavaScript pour ajouter un Captcha HomeMade
 */
 
-var $ = require("JQuery");
+var $ = require("jquery");
+var math = require("math.js");
 
 import { el, mount } from 'modules/redom.js';
 
@@ -37,7 +38,80 @@ function GenerateCaptcha(type){
     $(consts.container_id).prepend('<span hidden id="'+consts.type_handler+'">'+type+'</span>');
     switch(type){
         case constants.type.calculations:
-            
+
+            var parenthesesOnLeft = Math.random() * 2 + 1 === 0;
+            var difficultySelector;
+            var question;
+            var operand;
+            var firstOperandLoop;
+
+            var newIterate = Math.random() * 4 + 1;
+            switch(newIterate){
+                //For add (+)
+                case '1':
+                operand = "+";
+                difficultySelector = 35;
+                var firstNumber = Math.random() * difficultySelector;
+                var secondNumber = Math.random() * (difficultySelector - 1);
+                    break;
+
+                //For sub (-)
+                case '2':
+                operand = "-";
+                difficultySelector = 30;
+                var firstNumber = Math.random() * difficultySelector;
+                var secondNumber = Math.random() * (difficultySelector - 1);
+                    break;
+
+                //For mult (*)
+                case '3':
+                operand = "*";
+                difficultySelector = 12;
+                var firstNumber = Math.random() * difficultySelector;
+                var secondNumber = Math.random() * difficultySelector / 2;
+                    break;
+
+                //For divide (/)
+                case '4':
+                operand = "/";
+                difficultySelector = 10;
+                var firstNumber = Math.random() * difficultySelector;
+                var secondNumber = 2;
+                    break;
+            }
+            question += (parenthesesOnLeft ? "(" : "" ) + firstNumber + operand + (!parenthesesOnLeft ? "(" : "" ) + secondNumber + (parenthesesOnLeft ? ")" : "" );
+
+            var newIterate = Math.random() * 4 + 1;
+
+            switch(newIterate){
+                //For add (+)
+                case '1':
+                operand = "+";
+                difficultySelector = parenthesesOnLeft ? 35 : 5;
+                var firstNumber = Math.random() * difficultySelector;
+                    break;
+
+                //For sub (-)
+                case '2':
+                operand = "-";
+                difficultySelector = parenthesesOnLeft ? 30 : 9;
+                var firstNumber = Math.random() * difficultySelector;
+                    break;
+
+                //For mult (*)
+                case '3':
+                operand = "*";
+                difficultySelector = 12;
+                var firstNumber = Math.random() * difficultySelector;
+                    break;
+
+                //For divide (/)
+                case '4':
+                operand = "/";
+                var firstNumber = 2;
+                    break;
+            }
+            question += operand + firstNumber + (!parenthesesOnLeft ? ")" : "" );
             break;
         case constants.type.pictures:
             break;
