@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Nyaaw/ETMLCaptcha/issues"
   },
-  "homepage": "https://github.com/Nyaaw/ETMLCaptcha#readme"
+  "homepage": "https://github.com/Nyaaw/ETMLCaptcha#readme",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
 }
