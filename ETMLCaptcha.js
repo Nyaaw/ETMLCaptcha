@@ -18,13 +18,31 @@ var consts = {
     container_id = "captcha_container",
     type = {CALCULATIONS = "calculations", PICTURES = "pictures", TEXT = "text"}
 
+
 };
 
 /**
  * Constructeur de la librairies
  */
-function ETMLCaptcha(){
+function ETMLCaptcha(container_id = "captcha_container", type = "calculations"){
+    constants.container_id = container_id;
+    constants.type = type;
+}
 
+/**
+ * Génère un captcha selon le type choisi
+ */
+function GenerateCaptcha(type){
+    switch(type){
+        case constants.type.calculations:
+            break;
+
+        case constants.type.pictures:
+            break;
+            
+        case constants.type.text:
+            break;
+    }
 }
 
 /**
@@ -32,17 +50,6 @@ function ETMLCaptcha(){
  */
 function OutputDesign(afterWhat = "header", insideWhat = "body"){
 
-}
-
-/**
- * Génère un captcha selon le type choisi
- */
-function GenerateCaptcha(type = consts.type.CALCULATIONS){
-    switch(type){
-        case consts.type.CALCULATIONS:
-            outputCaptchaForm(consts.type.CALCULATIONS);
-            break;
-    }
 }
 
 function outputCaptchaForm(type){
@@ -68,3 +75,4 @@ class Captcha{
     }
 
 };
+
