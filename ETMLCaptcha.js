@@ -19,8 +19,7 @@ var consts = {
     form_validator = "captcha_validator",
     type = {CALCULATIONS = "calculations", PICTURES = "pictures", TEXT = "text"},
     answer_handler = "ans_handler",
-    button_submit = "submit_ans",
-    type_handler = "type_captcha_handler"
+    type_handler = "type_captcha_handler",
 };
 
 /**
@@ -38,11 +37,10 @@ function GenerateCaptcha(type){
     $(consts.container_id).prepend('<span hidden id="'+consts.type_handler+'">'+type+'</span>');
     switch(type){
         case constants.type.calculations:
+            
             break;
-
         case constants.type.pictures:
             break;
-            
         case constants.type.text:
             break;
     }
