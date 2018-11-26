@@ -16,9 +16,11 @@ var config = {
 
 var consts = {
     container_id = "captcha_container",
-    type = {CALCULATIONS = "calculations", PICTURES = "pictures", TEXT = "text"}
-
-
+    form_validator = "captcha_validator",
+    type = {CALCULATIONS = "calculations", PICTURES = "pictures", TEXT = "text"},
+    answer_handler = "ans_handler",
+    button_submit = "submit_ans",
+    type_handler = "type_captcha_handler"
 };
 
 /**
@@ -33,6 +35,7 @@ function ETMLCaptcha(container_id = "captcha_container", type = "calculations"){
  * Génère un captcha selon le type choisi
  */
 function GenerateCaptcha(type){
+    $(consts.container_id).prepend('<span hidden id="'+consts.type_handler+'">'+type+'</span>');
     switch(type){
         case constants.type.calculations:
             break;
@@ -43,21 +46,17 @@ function GenerateCaptcha(type){
         case constants.type.text:
             break;
     }
+                
+    $(consts.button_submit).onclick(function(){
+        
+    })
 }
 
 /**
  * Affiche le design de base pour le captcha
  */
-function OutputDesign(afterWhat = "header", insideWhat = "body"){
+function OutputDesign(insideWhat = "body"){
 
-}
-
-function outputCaptchaForm(type){
-    switch(type){
-        case consts.type.CALCULATIONS:
-            $('#'+config.container_id)
-            break;
-    }
 }
 
 class Captcha{
