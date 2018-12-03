@@ -24,7 +24,7 @@ var consts = {
 };
 
 /**
- * Constructeur de la librairies
+ * Constructeur de la librairie
  */
 function ETMLCaptcha(container_id = "captcha_container", type = "calculations"){
     constants.container_id = container_id;
@@ -124,11 +124,13 @@ function GenerateCaptcha(type){
     })
 }
 
+//TODO: Applications/UWamp/www/TEST
+
 /**
  * Affiche le design de base pour le captcha
  */
 function OutputDesign(insideWhat = "body"){
-
+    $("#"+body).
 }
 
 class Captcha{
