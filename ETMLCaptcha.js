@@ -45,7 +45,7 @@ function GenerateCaptcha(type){
             var operand;
             var firstOperandLoop;
 
-            var newIterate = Math.random() * 4 + 1;
+            var newIterate = Math.round((Math.random() * 3) + 1);
             switch(newIterate){
                 //For add (+)
                 case '1':
@@ -81,7 +81,7 @@ function GenerateCaptcha(type){
             }
             question += (parenthesesOnLeft ? "(" : "" ) + firstNumber + operand + (!parenthesesOnLeft ? "(" : "" ) + secondNumber + (parenthesesOnLeft ? ")" : "" );
 
-            var newIterate = Math.random() * 4 + 1;
+            var newIterate = Math.round((Math.random() * 3) + 1);
 
             switch(newIterate){
                 //For add (+)
