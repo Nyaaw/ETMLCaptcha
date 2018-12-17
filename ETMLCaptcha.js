@@ -44,7 +44,7 @@ function include(type = "text/javascript", src) {
  * @param {Nombres MAX au dessus du min} maximum 
  * @param {MIN du nombre, default = 0} minimum 
  */
-function newRandom(maximum, minimum = 0) {
+function newRandom(maximum, minimum = 1) {
     return Math.round((Math.random() * maximum) + minimum);
 }
 
@@ -108,7 +108,7 @@ class Captcha {
      * Génère le captcha sur une feuille HTML
      */
     generate() {
-        this._data = this.getCaptchaQuestion(this._type);
+        this._data = this.newQuestion(this._type);
         this.OutputDesign(this.getParent(), this._data);
     }
 
@@ -133,7 +133,7 @@ class Captcha {
     /**
      * Génère un captcha selon le type choisi
      */
-    getCaptchaQuestion(type) {
+    newQuestion(type) {
         $(consts.container_id).prepend('<span hidden id="' + consts.type_handler + '">' + type + '</span>');
         var data;
         switch (type) {
@@ -144,8 +144,8 @@ class Captcha {
                 var question = "";
                 var operand;
 
-                var newIterate = newRandom(3, 1);
-                switch (newIterate) {
+                var firstIterate = newRandom(3, 1);
+                switch (firstIterate) {
                     //For add (+)
                     case 1:
                         operand = "+";
@@ -163,7 +163,7 @@ class Captcha {
                         //For mult (*)
                     case 3:
                         operand = "*";
-                        difficultySelector = 12;
+                        difficultySelector = 4;
                         var secondNumber = newRandom(difficultySelector / 2);
                         break;
 
@@ -174,10 +174,15 @@ class Captcha {
                         var secondNumber = 2;
                         break;
                 }
-                var firstNumber = newRandom(difficultySelector);
+                var lastFirstNumber = newRandom(difficultySelector);
+
+                //Contrôle de difficulté sur un cas
+                if(firstIterate === 4 && lastFirstNumber % secondNumber !== 0){
+                    lastFirstNumber = newRandom(difficultySelector / 2) * secondNumber;
+                }
 
                 //Ajout de la première partie du calcul dans la question
-                question += (parenthesesOnLeft ? "(" : "") + firstNumber + operand + (!parenthesesOnLeft ? "(" : "") + secondNumber + (parenthesesOnLeft ? ")" : "");
+                question += (parenthesesOnLeft ? "(" : "") + lastFirstNumber + operand + (!parenthesesOnLeft ? "(" : "") + secondNumber + (parenthesesOnLeft ? ")" : "");
 
                 var newIterate = newRandom(3, 1);
 
@@ -210,9 +215,18 @@ class Captcha {
                         break;
                 }
                 
+                //Contrôle de difficulté sur un cas
+                if(firstIterate === 4 && !parenthesesOnLeft && lastFirstNumber % eval(secondNumber + operand + firstNumber) !== 0){
+
+                }
+
                 //Ajout de la deuxième partie du calcul dans la question
                 question += operand + firstNumber + (!parenthesesOnLeft ? ")" : "");
-                question = question.replace('*', 'x');
+
+                //Supprimer tous les "*" pour des "x"
+                while (question.includes("*")){
+                    question = question.replace('*', 'x');
+                }
                 data = question;
                 break;
             case constants.type.pictures:
