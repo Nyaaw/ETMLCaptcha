@@ -1,138 +1,17 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <p id="demo"></p>
-<!-- <script>
+<div class="captcha"></div>
 
+
+<script type="text/javascript" src="ETMLCaptcha.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    var test = new Captcha(1, 'calculations');
+    test.generate();
     
-
-    function include(src, type = "text/javascript") {
-        var elem = '<script type="' + type + '" src="' + src + '">\<\/script>';
-        document.writeln(elem);
-    }
-
-    new Element("script", {src: "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js", type: "text/javascript"});
-    new Element("script", {src: "https://unpkg.com/mathjs/dist/math.min.js", type: "text/javascript"});
-    // var $ = include("https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js");
-    // var math = include("https://unpkg.com/mathjs/dist/math.min.js");
-</script> -->
-<script>
-    // Load jQuery if not already included
-	if (typeof jQuery == 'undefined')
-	{
-		var script = document.createElement("script");
-		script.type = "text/javascript";
-		script.src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js";
-		document.head.appendChild(script);
-    }
-    jQuery($.document.ready(function(){
-
-    /**
-     * Génére et retourn un nombre aléatoire
-     * @param {Nombres MAX au dessus du min} maximum 
-     * @param {MIN du nombre, default = 0} minimum 
-     */
-    function newRandom(maximum, minimum = 0) {
-        return Math.round((Math.random() * maximum) + minimum);
-    }
-
-
-    /**
-     * Génère un captcha selon le type choisi
-     */
-    function GenerateCaptcha(type = 'calculations') {
-        $(consts.container_id).prepend('<span hidden id="' + consts.type_handler + '">' + type + '</span>');
-        switch (type) {
-            case constants.type.calculations:
-                //TODO : contrôle sur les "/"
-                var parenthesesOnLeft = newRandom(1) === 0;
-                var difficultySelector;
-                var question = "";
-                var operand;
-
-                var newIterate = newRandom(3, 1);
-                switch (newIterate) {
-                    //For add (+)
-                    case 1:
-                        operand = "+";
-                        difficultySelector = 35;
-                        var secondNumber = newRandom(difficultySelector - 1);
-                        break;
-
-                        //For sub (-)
-                    case 2:
-                        operand = "-";
-                        difficultySelector = 30;
-                        var secondNumber = newRandom(difficultySelector - 1);
-                        break;
-
-                        //For mult (*)
-                    case 3:
-                        operand = "*";
-                        difficultySelector = 12;
-                        var secondNumber = newRandom(difficultySelector / 2);
-                        break;
-
-                        //For divide (/)
-                    case 4:
-                        operand = "/";
-                        difficultySelector = 10;
-                        var secondNumber = 2;
-                        break;
-                }
-                var firstNumber = newRandom(difficultySelector);
-                question += (parenthesesOnLeft ? "(" : "") + firstNumber + operand + (!parenthesesOnLeft ? "(" : "") +
-                    secondNumber + (parenthesesOnLeft ? ")" : "");
-
-                var newIterate = newRandom(3, 1);
-
-                switch (newIterate) {
-                    //For add (+)
-                    case 1:
-                        operand = "+";
-                        difficultySelector = parenthesesOnLeft ? 35 : 5;
-                        var firstNumber = newRandom(difficultySelector);
-                        break;
-
-                        //For sub (-)
-                    case 2:
-                        operand = "-";
-                        difficultySelector = parenthesesOnLeft ? 30 : 9;
-                        var firstNumber = newRandom(difficultySelector);
-                        break;
-
-                        //For mult (*)
-                    case 3:
-                        operand = "*";
-                        difficultySelector = 12;
-                        var firstNumber = newRandom(difficultySelector);
-                        break;
-
-                        //For divide (/)
-                    case 4:
-                        operand = "/";
-                        var firstNumber = 2;
-                        break;
-                }
-                question += operand + firstNumber + (!parenthesesOnLeft ? ")" : "");
-                answer = math.eval(question);
-                question = question.replace('*', 'x');
-                break;
-            case constants.type.pictures:
-                break;
-            case constants.type.text:
-                break;
-        }
-
-        $(consts.button_submit).onclick(function () {
-
-        });
-
-        return question;
-    }
-    $('#demo').html(GenerateCaptcha());
-    })
-);
-
 </script>

@@ -1,5 +1,5 @@
 <?php
-    type = array(
+    $type = array(
         CALCULATIONS => "calculations",
         PICTURES => "pictures",
         TEXT => "text"
@@ -9,17 +9,19 @@
     $answer = $_GET['a'];
     $ret = false;
     switch($type) {
-        case type[CALCULATIONS]:
+        case $type[CALCULATIONS]:
+        while (strpos($question, 'x') !== false) ){
             str_replace("x", "*", $question);
+        }
             if(eval('return '.$question.';') === $answer){
                 $ret = true;
             }
         break;
 
-        case type[PICTURES]:
+        case $type[PICTURES]:
         break;
 
-        case type[TEXT]:
+        case $type[TEXT]:
         break;
     }
 
