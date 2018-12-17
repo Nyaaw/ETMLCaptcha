@@ -14,7 +14,6 @@ var config = {
 };
 
 var consts = {
-    container_id = "captcha_container",
     form_validator = "captcha_validator",
     type = { 
         CALCULATIONS = "calculations",
@@ -29,8 +28,7 @@ var consts = {
 /**
  * Constructeur de la librairie
  */
-function ETMLCaptcha(container_id = "captcha_container", type = "calculations") {
-    constants.container_id = container_id;
+function ETMLCaptcha(type = "calculations") {
     constants.type = type;
 }
 
@@ -78,13 +76,11 @@ class Captcha {
     _id;
     _type;
     _data;
-    _parent;
 
 
     constructor(id, type, parent) {
         this._id = id;
         this._type = type;
-        this._parent = parent;
     }
 
     /**
@@ -109,13 +105,6 @@ class Captcha {
     }
 
     /**
-     * Récupère le parent du captcha
-     */
-    getParent() {
-        return this._parent;
-    }
-
-    /**
      * Génère le captcha sur une feuille HTML
      */
     generate() {
@@ -127,8 +116,18 @@ class Captcha {
     /**
      * Affiche le design de base pour le captcha
      */
-    OutputDesign(insideWhat = "body") {
-        $("#" + body);
+    OutputDesign(data) {
+        $(".captcha").append(
+            '<div class="subContainer">'+
+            '    <h4 class="captchaH4">Captcha</h4>'+
+            '    <p class="help">Veuillez répondre à la question pour prouver que vous n\'êtes pas un robot</p>'+
+            '    <p class="question">'+data+'</p>'+
+            '    <form method="POST" action="">'+
+            '        <input placeholder="votre réponse.." type="text" name="answer" class="answer" >'+
+            '        <button class="submit" type="submit">Envoyer</button>'+
+            '    </form>'+
+            '</div>'
+        );
     }
 
     /**
