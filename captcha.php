@@ -4,9 +4,9 @@
         PICTURES => "pictures",
         TEXT => "text"
     );
-    $type = $_GET['t'];
-    $question = $_GET['q'];
-    $answer = $_GET['a'];
+    $type = $_POST['t'];
+    $question = $_POST['q'];
+    $answer = $_POST['a'];
     $ret = false;
     switch($type) {
         case $type[CALCULATIONS]:
