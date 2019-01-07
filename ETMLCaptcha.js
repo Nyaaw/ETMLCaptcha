@@ -101,7 +101,7 @@ class Captcha {
     /**
      * Récupère les données du captcha
      */
-    getData() {
+    getData() {		
         return this._data;
     }
 
@@ -110,8 +110,15 @@ class Captcha {
      */
     generate() {
         var newQ =  this.newQuestion(this._type);
-        this._data = newQ;
-        
+		
+        switch(this._type){
+			case 'calculations':
+				var hiddenSpan = "<span hidden>null</span>";
+				newQ = newQ.replace("(", "("+hiddenSpan);
+				newQ = newQ.replace(")", ")"+hiddenSpan);
+			break;
+		}
+		this._data = newQ;
         this.OutputDesign(this._data);
     }
 
@@ -137,7 +144,6 @@ class Captcha {
      * Génère un captcha selon le type choisi
      */
     newQuestion(type) {
-        $(consts.container_id).prepend('<span hidden id="' + consts.type_handler + '">' + type + '</span>');
         var data;        
         switch (type) {
             case consts.type.CALCULATIONS:
@@ -184,7 +190,7 @@ class Captcha {
                 if (firstIterate === 4 && lastFirstNumber % secondNumber !== 0) {
                     lastFirstNumber = newRandom(difficultySelector / 2) * secondNumber;
                 }
-
+				
                 //Ajout de la première partie du calcul dans la question
                 question += (parenthesesOnLeft ? "(" : "") + lastFirstNumber + operand + (!parenthesesOnLeft ? "(" : "") + secondNumber + (parenthesesOnLeft ? ")" : "");
 

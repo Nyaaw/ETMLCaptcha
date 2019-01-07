@@ -10,6 +10,12 @@
     $ret = false;
     switch($type) {
         case $type[CALCULATIONS]:
+		$hiddenSpan = "<span hidden>null</span>";
+		
+		//Supprimer les span null
+		str_replace("(".$hiddenSpan, "(", $question;
+		str_replace(")".$hiddenSpan, "(", $question;
+		//Remplacement des éventuels x par des *
         while (strpos($question, 'x') !== false) ){
             str_replace("x", "*", $question);
         }
