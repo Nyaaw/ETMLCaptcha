@@ -11,15 +11,20 @@
     switch($type) {
         case $type[CALCULATIONS]:
 		$hiddenSpan = "<span hidden>null</span>";
-		
-		//Supprimer les span null
-		str_replace("(".$hiddenSpan, "(", $question;
-		str_replace(")".$hiddenSpan, "(", $question;
-		//Remplacement des éventuels x par des *
-        while (strpos($question, 'x') !== false) ){
-            str_replace("x", "*", $question);
+		while (strpos($question, '&lt') !== false) ){
+            $question = str_replace("&lt", "<", $question);
         }
-            if(eval('return '.$question.';') === $answer){
+		while (strpos($question, '&gt') !== false) ){
+            $question = str_replace("&gt", ">", $question);
+        }
+		//Supprimer les span null
+		$question = str_replace("(".$hiddenSpan, "(", $question;
+		$final = str_replace(")".$hiddenSpan, "(", $question;
+		//Remplacement des éventuels x par des *
+        while (strpos($final, 'x') !== false) ){
+            $final = str_replace("x", "*", $final);
+        }
+            if(eval('return '.$final.';') === $answer){
                 $ret = true;
             }
         break;
