@@ -119,18 +119,31 @@ class Captcha {
     /**
      * Affiche le design de base pour le captcha
      */
-    OutputDesign(data) {        
+    OutputDesign(data) {     
+		var type = this.getType();
         $(".captcha").append(
             '<div class="subContainer">' +
             '    <h4 class="captchaH4">Captcha</h4>' +
             '    <p class="help">Veuillez répondre à la question pour prouver que vous n\'êtes pas un robot</p>' +
             '    <p class="question">' + data + '</p>' +
-            '    <form method="POST" action="">' +
-            '        <input placeholder="votre réponse.." type="text" name="answer" class="answer" >' +
-            '        <button class="submit" type="submit">Envoyer</button>' +
-            '    </form>' +
+		    '    <input placeholder="votre réponse.." type="text" name="answer" class="answer" >' +
+			'	 <button class="submit" type="submit">Envoyer</button>' +
             '</div>'
         );
+		
+		$(".captcha button.submit").click(function() {	
+			console.log(type, data, $(".captcha .answer").val());
+			$.ajax({
+				url: 'captcha.php',
+				type: 'post',
+				data: {"t": type , "q" : data, "a" : $(".captcha .answer").val()},
+				function(response) {
+					// Log the response to the console
+					console.log("Response: "+response)
+				}
+			});
+		});
+		
     }
 
     /**
